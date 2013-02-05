@@ -8,9 +8,6 @@ public class Bullet : MonoBehaviour {
     public float m_Distance;
     public float m_Speed;
     public Vector3 m_fireDir;
-    
-       
-    
 
     public virtual void setDirection(Vector3 dir) 
     {
@@ -25,7 +22,6 @@ public class Bullet : MonoBehaviour {
            m_Distance = m_Distance - d;
 
             rigidbody.MovePosition(transform.position + (m_fireDir * d));
-//            rigidbody.MovePosition((m_fireDir * d));
         }else{
             Destroy(gameObject);
         }
@@ -34,21 +30,23 @@ public class Bullet : MonoBehaviour {
     {
         if (other.gameObject.tag != gameObject.tag)
         {
-            Ship s = (Ship)other.gameObject.GetComponent<Ship>();
-            if (s != null)
+            Attack(other.gameObject);
+//            Destroy(gameObject);
+        }
+    }
+    protected virtual void Attack(GameObject go){
+        Ship s = (Ship)go.GetComponent<Ship>();
+        if (s != null)
+        {
+            s.m_health = s.m_health - m_Damage;
+        }
+        else
+        {
+            Bullet b = (Bullet)go.GetComponent<Bullet>();
+            if (b != null)
             {
-                s.m_health = s.m_health - m_Damage;
+                Destroy(b.gameObject);
             }
-            else
-            {
-                Bullet b = (Bullet)other.gameObject.GetComponent<Bullet>();
-                if (b != null)
-                {
-                    b.setDirection(m_fireDir * -1);
-                    //Destroy(b.gameObject);
-                }
-            }
-            Destroy(gameObject);
         }
     }
 }
