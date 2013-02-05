@@ -14,6 +14,25 @@ public class PlayerShip : Ship {
 	new void Update () {
         base.Update();
         Vector3 newPosition = new Vector3();
+        /*if (Input.GetKey(KeyCode.UpArrow))
+        {
+            newPosition.y = newPosition.y + (m_speed);
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            newPosition.y = newPosition.y - (m_speed);
+        }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            newPosition.x = newPosition.x - (m_speed);
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            newPosition.x = newPosition.x + (m_speed);
+        }
+        */
+       
+        
         if (Input.GetKey(KeyCode.UpArrow))
         {
             newPosition.y = newPosition.y + (Time.deltaTime * m_speed);

@@ -3,7 +3,8 @@ using System.Collections;
 
 public class ReflectBullet : Bullet {
 
-    protected override void Attack(GameObject go){
+    protected override void Attack(GameObject go)
+    {
         Debug.Log("Reflecting");
         Ship s = (Ship)go.GetComponent<Ship>();
         if (s != null)
