@@ -4,7 +4,6 @@
 
 *.pydevproject
 .project
-.metadata
 bin/
 tmp/
 *.tmp
@@ -47,7 +46,6 @@ local.properties
 *_i.c
 *_p.c
 *.ilk
-*.meta
 *.obj
 *.pch
 *.pdb
