@@ -1,0 +1,13 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\iPhone Standard Assets\Scripts\PlayerRelativeControl.js">
+    <Files>
+      <File FileName="Assets\iPhone Standard Assets\Scripts\RotationConstraint.js" Line="6" Column="64" />
+      <File FileName="Assets\iPhone Standard Assets\Scripts\PlayerRelativeControl.js" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
