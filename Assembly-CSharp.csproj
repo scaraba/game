@@ -18,7 +18,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE;ENABLE_MICROPHONE;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;ENABLE_AUDIO_FMOD;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PHYSICS;ENABLE_TERRAIN;ENABLE_CACHING;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_CLOTH;ENABLE_MOVIES;ENABLE_AUDIO;ENABLE_WWW;ENABLE_SHADOWS;ENABLE_DUCK_TYPING;UNITY_4_0_1;UNITY_4_0;UNITY_STANDALONE_WIN;ENABLE_PROFILER;UNITY_EDITOR</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PHYSICS;ENABLE_TERRAIN;ENABLE_CACHING;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_CLOTH;ENABLE_MOVIES;ENABLE_AUDIO;ENABLE_WWW;ENABLE_SHADOWS;ENABLE_DUCK_TYPING;UNITY_4_1_2;UNITY_4_1;ENABLE_PROFILER;UNITY_EDITOR</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -45,16 +45,85 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Bullet.cs" />
+     <Compile Include="Assets\Scripts\BulletShield.cs" />
+     <Compile Include="Assets\Scripts\Character\ActionController.cs" />
+     <Compile Include="Assets\Scripts\Character\AnimationController.cs" />
+     <Compile Include="Assets\Scripts\Character\CameraController.cs" />
+     <Compile Include="Assets\Scripts\Character\MovementController.cs" />
+     <Compile Include="Assets\Scripts\DemoControl.cs" />
      <Compile Include="Assets\Scripts\EnemyShip.cs" />
      <Compile Include="Assets\Scripts\EnemyShip2.cs" />
      <Compile Include="Assets\Scripts\EnemyShip3.cs" />
+     <Compile Include="Assets\Scripts\GUI\CreditsGUI.cs" />
+     <Compile Include="Assets\Scripts\GUI\GameGUI.cs" />
+     <Compile Include="Assets\Scripts\GUI\MenuGUI.cs" />
+     <Compile Include="Assets\Scripts\GUI\ScoreboardGUI.cs" />
+     <Compile Include="Assets\Scripts\GUI\SetupGUI.cs" />
+     <Compile Include="Assets\Scripts\GUIManager.cs" />
+     <Compile Include="Assets\Scripts\Items\ActiveObject.cs" />
+     <Compile Include="Assets\Scripts\Items\Button.cs" />
+     <Compile Include="Assets\Scripts\Items\Crystal.cs" />
+     <Compile Include="Assets\Scripts\Items\ImpactWarning.cs" />
+     <Compile Include="Assets\Scripts\Items\Meteorite.cs" />
+     <Compile Include="Assets\Scripts\Items\Spaceship.cs" />
+     <Compile Include="Assets\Scripts\LevelScroll.cs" />
+     <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerShip.cs" />
      <Compile Include="Assets\Scripts\PowerUp.cs" />
      <Compile Include="Assets\Scripts\ReflectBullet.cs" />
+     <Compile Include="Assets\Scripts\Shield.cs" />
      <Compile Include="Assets\Scripts\Ship.cs" />
+     <Compile Include="Assets\Scripts\SkylineManager.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\Spread.cs" />
      <Compile Include="Assets\Scripts\StartGame.cs" />
+     <Compile Include="Assets\Scripts\Utility\Label.cs" />
+     <Compile Include="Assets\Scripts\Utility\Radar.cs" />
+     <Compile Include="Assets\Scripts\Utility\XperiaInput.cs" />
+     <Compile Include="Assets\Scripts\Utility\ZeusInput.cs" />
+     <Compile Include="Assets\Sources\LightningBolt.cs" />
+     <Compile Include="Assets\iTween\Plugins\iTween.cs" />
+     <Compile Include="Assets\iTween\Sample\MoveSample.cs" />
+     <Compile Include="Assets\iTween\Sample\RotateSample.cs" />
+     <Compile Include="Assets\iTween\Sample\SampleInfo.cs" />
+     <None Include="Assets\Scripts\shaderstuff\RenderOverdrawZ.shader" />
+     <None Include="Assets\iPhone Standard Assets\Additive-Projector\Guidelines.txt" />
+     <None Include="Assets\Show UV Mapping\forceField.shader" />
+     <None Include="Assets\iPhone Standard Assets\iPhone Shaders\Particle Shaders\iPhone Multiply Culled.shader" />
+     <None Include="Assets\iPhone Standard Assets\iPhone Shaders\iPhone Background.shader" />
+     <None Include="Assets\iPhone Standard Assets\iPhone Shaders\Vertex Colored Shaders\iPhone Transparent Vertex Color.shader" />
+     <None Include="Assets\iPhone Standard Assets\Water\Guidelines.txt" />
+     <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
+     <None Include="Assets\iPhone Standard Assets\iPhone Shaders\iPhone Detail.shader" />
+     <None Include="Assets\iPhone Standard Assets\Additive-Projector\Additive.shader" />
+     <None Include="Assets\iPhone Standard Assets\Water\DepthMask.shader" />
+     <None Include="Assets\Glowing Things\FunkyThingsComposite.shader" />
+     <None Include="Assets\Edge Detection\EdgeDetectNormals.shader" />
+     <None Include="Assets\Glowing Things\FunkyVertexLit.shader" />
+     <None Include="Assets\Show UV Mapping\ShowUVMapping.shader" />
+     <None Include="Assets\Show RenderTypes\ShowRenderTypes.shader" />
+     <None Include="Assets\iPhone Standard Assets\iPhone Shaders\Lightmap Shaders\iPhone Lightmap Reflective.shader" />
+     <None Include="Assets\iPhone Standard Assets\iPhone Shaders\Particle Shaders\iPhone Particles Additive Culled.shader" />
+     <None Include="Assets\Show Overdraw\RenderOverdrawZ.shader" />
+     <None Include="Assets\Scripts\AstroDude.shader" />
+     <None Include="Assets\Glowing Things\RenderFunkyThings.shader" />
+     <None Include="Assets\iPhone Standard Assets\Blob-Shadow\Guidelines.txt" />
+     <None Include="Assets\Scripts\shaderstuff\myHologram.shader" />
+     <None Include="Assets\iPhone Standard Assets\iPhone Shaders\Vertex Colored Shaders\iPhone Vertex Colored.shader" />
+     <None Include="Assets\Scripts\shaderstuff\forceField.shader" />
+     <None Include="Assets\iPhone Standard Assets\iPhone Shaders\Lightmap Shaders\iPhone Lightmap Only.shader" />
+     <None Include="Assets\iPhone Standard Assets\iPhone Shaders\Lightmap Shaders\iPhone Lightmap AlphaTest.shader" />
+     <None Include="Assets\Common Assets\RenderDepth.shader" />
+     <None Include="Assets\Show Overdraw\RenderOverdraw.shader" />
+     <None Include="Assets\iPhone Standard Assets\iPhone Shaders\Self Illumination\iPhone Self Illuminated.shader" />
+     <None Include="Assets\Common Assets\RenderNormalsAndDepth.shader" />
+     <None Include="Assets\iPhone Standard Assets\Blob-Shadow\ProjectorMultiply.shader" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{C4670D74-53BA-CADB-D209-62996F2B0691}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{D4FEF11C-C30A-B6D8-18E2-5F17350CBCF1}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

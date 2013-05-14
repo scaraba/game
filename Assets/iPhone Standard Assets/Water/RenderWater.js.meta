@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 1b1993baf14114a939cdab77f84fe2e0
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - depthShader: {fileID: 4800000, guid: cbf71114858ed4320b7b181f5e116110, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

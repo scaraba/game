@@ -1,9 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Spawner.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MainHUDGui.js">
     <Files>
-      <File FileName="Assets\Scripts\Spawner.cs" Line="32" Column="6" />
-      <File FileName="Assets\Scripts\EnemyShip2.cs" Line="1" Column="1" />
+      <File FileName="Assets\Sources\TronTrail.js" Line="1" Column="1" />
+      <File FileName="Assets\iPhone Standard Assets\Scripts\Joystick.js" Line="1" Column="1" />
+      <File FileName="Assets\iPhone Standard Assets\Scripts\SidescrollControl.js" Line="65" Column="3" />
+      <File FileName="Assets\Scripts\MainHUDGui.js" Line="24" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

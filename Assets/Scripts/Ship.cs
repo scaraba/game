@@ -13,6 +13,11 @@ public abstract class Ship : MonoBehaviour {
     public Vector3 m_fireDir;
     public float m_range;
 
+    //new things for level initiation
+    private Vector3 startPos;
+    public static float distanceTravelled;
+
+
     //these are internal that will never need to be exposed
     private float m_fireTimer;
     protected CharacterController m_charControl;
@@ -20,6 +25,9 @@ public abstract class Ship : MonoBehaviour {
     //All ship types will probably need these functions
 	// Use this for initialization
 	public virtual void Start () {
+
+        StartGame.GameStart += GameStart;
+        StartGame.GameOver += GameOver;
         m_charControl = (CharacterController)gameObject.GetComponent<CharacterController>();
         m_fireDir.Normalize();
 	}
@@ -29,11 +37,31 @@ public abstract class Ship : MonoBehaviour {
         //checking to see if the ship is still afloat
         if (m_health < 1){
             Destroy(gameObject);
+            StartGame.TriggerGameOver();
         }
         //keeping a timer for shot refreshing
         if (m_fireTimer > 0)
             m_fireTimer = m_fireTimer - Time.deltaTime;
 	}
+    private void GameStart()
+    {
+        distanceTravelled = 0f;
+        transform.localPosition = startPos;
+        rigidbody.isKinematic = false;
+        gameObject.active = true;
+        enabled = true;
+    }
+
+    private void GameOver()
+    {
+        //rigidbody.isKinematic = true;
+        enabled = false;
+    
+    
+    }
+
+
+
     public virtual void fire()
     {
         //Debug.Log("m_fireTimer" + m_fireTimer);
@@ -42,6 +70,8 @@ public abstract class Ship : MonoBehaviour {
             m_fireTimer = m_fireRate;
             GameObject go = (GameObject)Instantiate(m_bullet, (transform.position+m_fireDir*transform.localScale.magnitude), Quaternion.identity);
             Bullet b = (Bullet)go.GetComponent<Bullet>();
+            
+            
             if (b != null)
             {
                 b.m_Damage = m_damage;

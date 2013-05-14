@@ -45,7 +45,7 @@ public class Bullet : MonoBehaviour {
             Bullet b = (Bullet)go.GetComponent<Bullet>();
             if (b != null)
             {
-                Destroy(b.gameObject);
+                DestroyImmediate(b.gameObject);
             }
         }
     }

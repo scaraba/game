@@ -1,14 +1,29 @@
 using UnityEngine;
 using System.Collections;
 
-public class StartGame : MonoBehaviour {
+public static class StartGame {
+    public delegate void GameEvent();
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	}
+    public static event GameEvent GameStart, GameOver;
+
+    public static void TriggerGameStart()
+    {
+        if (GameStart != null)
+        {
+            GameStart();
+        }
+    
+    }
+
+    public static void TriggerGameOver()
+    {
+        if (GameOver != null)
+        {
+            GameOver();
+        }
+    
+    }
+
+
+
 }
