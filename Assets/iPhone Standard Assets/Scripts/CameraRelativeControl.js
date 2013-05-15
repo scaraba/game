@@ -118,16 +118,17 @@ function Update()
 	//camRotation.x *= rotationSpeed.x;    
     //camRotation.y *= rotationSpeed.y;
 	//camRotation *= Time.deltaTime;
-    camRotation.y *= 0;
-    camRotation.z *= rotationSpeed.y;
+    camRotation.y *= rotateJoystick.position.x;
+    camRotation.z *= rotateJoystick.position.y;
     camRotation.y = 0;
 	character.transform.forward = camRotation.normalized;
+    Debug.Log(camRotation);
 
 	// Rotate around the character horizontally in world, but use local space
 	// for vertical rotation
 	//cameraPivot.Rotate( 0, camRotation.x, 0, Space.World );
-    cameraPivot.Rotate(camRotation.x, camRotation.y,0);
-	cameraPivot.Rotate( camRotation.y, 0, 0 );
+   //cameraPivot.Rotate(camRotation.x, camRotation.y,0);
+	//cameraPivot.Rotate( camRotation.y, 0, 0 );
 
 
 }
