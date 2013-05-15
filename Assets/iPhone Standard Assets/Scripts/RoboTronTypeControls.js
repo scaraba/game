@@ -8,13 +8,13 @@
 // stick is used to rotate the camera around the character.
 // A quick double-tap on the right joystick will make the 
 // character jump.
+//MODIFIED FOR DUALSTICK SHOOTER BY JOHN CHITMON
 //////////////////////////////////////////////////////////////
 
 // This script must be attached to a GameObject that has a CharacterController
 @script RequireComponent( CharacterController )
 
 var moveJoystick : Joystick;
-//var rotateJoystick : Joystick;
 var shootJoystick : Joystick; //Joystick repurposed for shooting
 
 //var cameraPivot : Transform;						// The transform used for camera rotation
@@ -26,6 +26,9 @@ var speed : float = 5;								// Ground speed
 //var inAirMultiplier : float = 0.25; 				// Limiter for ground speed while jumping
 var rotationSpeed : Vector2 = Vector2( 50, 25 );	// Camera rotation speed for each axis
 
+//This shouldn't be exposed
+private var fireTimer : float;
+public var fireRate : float;
 
 
 private var thisTransform : Transform;
@@ -49,13 +52,24 @@ function Start()
 function FaceMovementDirection()
 {	
 	var horizontalVelocity : Vector3 = character.velocity;
-	horizontalVelocity.y = 0; // Ignore vertical movement
+	//horizontalVelocity.y = 0; // Ignore vertical movement
 	
 	// If moving significantly in a new direction, point that character in that direction
 	if ( horizontalVelocity.magnitude > 0.1 )
 		thisTransform.forward = horizontalVelocity.normalized;
 }
 
+function Fire()
+{
+if(fireTimer <= 0)
+{
+fireTimer = fireRate;
+var shoot: GameObject;
+	shoot = Instantiate(bullet,(Update.aimRotation.position + speed * transform.localScale.magnitude), Quaternion.identity);
+}
+
+
+}
 function OnEndGame()
 {
 	// Disable joystick when the game ends	
@@ -99,6 +113,7 @@ function Update()
 	aimRotation.x *= rotationSpeed.x;
 	aimRotation.y *= rotationSpeed.y;
 	aimRotation *= Time.deltaTime;
+	
 	
 	// Rotate around the character horizontally in world, but use local space
 	// for vertical rotation

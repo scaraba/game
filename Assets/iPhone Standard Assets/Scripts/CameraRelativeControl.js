@@ -9,21 +9,21 @@
 // A quick double-tap on the right joystick will make the 
 // character jump.
 //////////////////////////////////////////////////////////////
-/*
+
 // This script must be attached to a GameObject that has a CharacterController
 @script RequireComponent( CharacterController )
 
 var moveJoystick : Joystick;
-//var rotateJoystick : Joystick;
-var shootRotation : Joystick; //Joystick repurposed for shooting
+var rotateJoystick : Joystick;
+//var shootRotation : Joystick; //Joystick repurposed for shooting
 
-//var cameraPivot : Transform;						// The transform used for camera rotation
-//var cameraTransform : Transform;					// The actual transform of the camera
-var bullet : GameObject;
+var cameraPivot : Transform;						// The transform used for camera rotation
+var cameraTransform : Transform;					// The actual transform of the camera
+//var bullet : GameObject;
 
 var speed : float = 5;								// Ground speed
-//var jumpSpeed : float = 8;
-//var inAirMultiplier : float = 0.25; 				// Limiter for ground speed while jumping
+var jumpSpeed : float = 8;
+var inAirMultiplier : float = 0.25; 				// Limiter for ground speed while jumping
 var rotationSpeed : Vector2 = Vector2( 50, 25 );	// Camera rotation speed for each axis
 
 
@@ -31,8 +31,8 @@ var rotationSpeed : Vector2 = Vector2( 50, 25 );	// Camera rotation speed for ea
 private var thisTransform : Transform;
 private var character : CharacterController;
 
-//private var velocity : Vector3;						// Used for continuing momentum while in air
-//private var canJump = true;
+private var velocity : Vector3;						// Used for continuing momentum while in air
+private var canJump = true;
 
 function Start()
 {
@@ -93,12 +93,12 @@ function Update()
 	}
 	else
 	{			
-		// Apply gravity to our velocity to diminish it over time
-		//velocity.y += Physics.gravity.y * Time.deltaTime;
+		 //Apply gravity to our velocity to diminish it over time
+		velocity.y += Physics.gravity.y * Time.deltaTime;
 		
-		// Adjust additional movement while in-air
-		//movement.x *= inAirMultiplier;
-		//movement.z *= inAirMultiplier;
+		 //Adjust additional movement while in-air
+		movement.x *= inAirMultiplier;
+		movement.z *= inAirMultiplier;
 	}
 	
 	movement += velocity;
@@ -108,27 +108,26 @@ function Update()
 	// Actually move the character
 	character.Move( movement );
 	
-	//if ( character.isGrounded )
+	if ( character.isGrounded )
 		// Remove any persistent velocity after landing
-		//velocity = Vector3.zero;
+		velocity = Vector3.zero;
 	
 	// Face the character to match with where she is moving
 	FaceMovementDirection();	
 	
 	// Scale joystick input with rotation speed
-	//var camRotation = rotateJoystick.position;
-	//camRotation.x *= rotationSpeed.x;
-	//camRotation.y *= rotationSpeed.y;
-	//camRotation *= Time.deltaTime;
+	var camRotation = rotateJoystick.position;
+	camRotation.x *= rotationSpeed.x;
+	camRotation.y *= rotationSpeed.y;
+	camRotation *= Time.deltaTime;
 	
-	var aimRotation = shootRotation.position;
-	aimRotation.x *= rotationSpeed.x;
-	aimRotation.y *= rotationSpeed.y;
-	aimRotation *= Time.deltaTime;
+	//var aimRotation = shootRotation.position;
+	//aimRotation.x *= rotationSpeed.x;
+	//aimRotation.y *= rotationSpeed.y;
+	//aimRotation *= Time.deltaTime;
 	
 	// Rotate around the character horizontally in world, but use local space
 	// for vertical rotation
-	//cameraPivot.Rotate( 0, camRotation.x, 0, Space.World );
-	//cameraPivot.Rotate( camRotation.y, 0, 0 );
+	cameraPivot.Rotate( 0, camRotation.x, 0, Space.World );
+	cameraPivot.Rotate( camRotation.y, 0, 0 );
 }
-*/
