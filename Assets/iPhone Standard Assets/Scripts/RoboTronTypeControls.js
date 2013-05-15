@@ -91,7 +91,7 @@ function Update()
 	var absJoyPos = Vector2( Mathf.Abs( moveJoystick.position.x ), Mathf.Abs( moveJoystick.position.y ) );
 	movement *= speed * ( ( absJoyPos.x > absJoyPos.y ) ? absJoyPos.x : absJoyPos.y );
 	
-
+	velocity.y += Physics.gravity.y * Time.deltaTime;
 	
 	movement += velocity;
 	movement += Physics.gravity;
