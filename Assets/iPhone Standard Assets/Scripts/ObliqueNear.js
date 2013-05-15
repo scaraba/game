@@ -1,3 +1,6 @@
+
+#pragma strict
+
 var plane : Transform;
 
 function CalculateObliqueMatrix( projection : Matrix4x4 , clipPlane : Vector4 ) : Matrix4x4

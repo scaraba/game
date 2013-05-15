@@ -11,6 +11,8 @@
 // locations.
 //////////////////////////////////////////////////////////////
 
+#pragma strict
+
 var origin : Transform; // What is considered the origin to the camera
 var zoom : float;
 var zoomMin : float = -5;

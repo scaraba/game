@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\EnemyShip2.cs" />
      <Compile Include="Assets\Scripts\EnemyShip3.cs" />
      <Compile Include="Assets\Scripts\GUIManager.cs" />
+     <Compile Include="Assets\Scripts\Joystick.cs" />
      <Compile Include="Assets\Scripts\LevelScroll.cs" />
      <Compile Include="Assets\Scripts\PlayerShip.cs" />
      <Compile Include="Assets\Scripts\PowerUp.cs" />

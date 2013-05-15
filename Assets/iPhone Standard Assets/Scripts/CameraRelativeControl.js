@@ -7,30 +7,27 @@
 // The left stick is used to move the character, and the right
 // stick is used to rotate the camera around the character.
 // A quick double-tap on the right joystick will make the 
-// character jump.
+// character jump. 
 //////////////////////////////////////////////////////////////
+
+#pragma strict
 
 // This script must be attached to a GameObject that has a CharacterController
 @script RequireComponent( CharacterController )
 
 var moveJoystick : Joystick;
 var rotateJoystick : Joystick;
-//var shootRotation : Joystick; //Joystick repurposed for shooting
 
 var cameraPivot : Transform;						// The transform used for camera rotation
 var cameraTransform : Transform;					// The actual transform of the camera
-//var bullet : GameObject;
 
 var speed : float = 5;								// Ground speed
 var jumpSpeed : float = 8;
 var inAirMultiplier : float = 0.25; 				// Limiter for ground speed while jumping
 var rotationSpeed : Vector2 = Vector2( 50, 25 );	// Camera rotation speed for each axis
 
-
-
 private var thisTransform : Transform;
 private var character : CharacterController;
-
 private var velocity : Vector3;						// Used for continuing momentum while in air
 private var canJump = true;
 
@@ -93,10 +90,10 @@ function Update()
 	}
 	else
 	{			
-		 //Apply gravity to our velocity to diminish it over time
+		// Apply gravity to our velocity to diminish it over time
 		velocity.y += Physics.gravity.y * Time.deltaTime;
 		
-		 //Adjust additional movement while in-air
+		// Adjust additional movement while in-air
 		movement.x *= inAirMultiplier;
 		movement.z *= inAirMultiplier;
 	}
@@ -120,11 +117,6 @@ function Update()
 	camRotation.x *= rotationSpeed.x;
 	camRotation.y *= rotationSpeed.y;
 	camRotation *= Time.deltaTime;
-	
-	//var aimRotation = shootRotation.position;
-	//aimRotation.x *= rotationSpeed.x;
-	//aimRotation.y *= rotationSpeed.y;
-	//aimRotation *= Time.deltaTime;
 	
 	// Rotate around the character horizontally in world, but use local space
 	// for vertical rotation

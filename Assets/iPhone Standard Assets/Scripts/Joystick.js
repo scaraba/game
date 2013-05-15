@@ -12,6 +12,8 @@
 // without moving the graphic
 //////////////////////////////////////////////////////////////
 
+#pragma strict
+
 @script RequireComponent( GUITexture )
 
 // A simple class for bounding how far the GUITexture will move
@@ -51,12 +53,18 @@ function Start()
 	
 	// Store the default rect for the gui, so we can snap back to it
 	defaultRect = gui.pixelInset;	
-	
+    
+    defaultRect.x += transform.position.x * Screen.width;// + gui.pixelInset.x; // -  Screen.width * 0.5;
+    defaultRect.y += transform.position.y * Screen.height;// - Screen.height * 0.5;
+    
+    transform.position.x = 0.0;
+    transform.position.y = 0.0;
+        
 	if ( touchPad )
 	{
 		// If a texture has been assigned, then use the rect ferom the gui as our touchZone
 		if ( gui.texture )
-			touchZone = gui.pixelInset;
+			touchZone = defaultRect;
 	}
 	else
 	{				
@@ -89,7 +97,7 @@ function ResetJoystick()
 	gui.pixelInset = defaultRect;
 	lastFingerId = -1;
 	position = Vector2.zero;
-	fingerDownPosition = Vector2.zero;
+	fingerDownPos = Vector2.zero;
 	
 	if ( touchPad )
 		gui.color.a = 0.025;	
@@ -112,11 +120,11 @@ function Update()
 	if ( !enumeratedJoysticks )
 	{
 		// Collect all joysticks in the game, so we can relay finger latching messages
-		joysticks = FindObjectsOfType( Joystick );
+		joysticks = FindObjectsOfType( Joystick ) as Joystick[];
 		enumeratedJoysticks = true;
 	}	
 		
-	var count = iPhoneInput.touchCount;
+	var count = Input.touchCount;
 	
 	// Adjust the tap time window while it still available
 	if ( tapTimeWindow > 0 )
@@ -130,7 +138,7 @@ function Update()
 	{
 		for(var i : int = 0;i < count; i++)
 		{
-			var touch : iPhoneTouch = iPhoneInput.GetTouch(i);			
+			var touch : Touch = Input.GetTouch(i);			
 			var guiTouchPos : Vector2 = touch.position - guiTouchOffset;
 	
 			var shouldLatchFinger = false;
@@ -193,11 +201,11 @@ function Update()
 				else
 				{					
 					// Change the location of the joystick graphic to match where the touch is
-					gui.pixelInset.x = Mathf.Clamp( guiTouchPos.x, guiBoundary.min.x, guiBoundary.max.x );
-					gui.pixelInset.y = Mathf.Clamp( guiTouchPos.y, guiBoundary.min.y, guiBoundary.max.y );		
+					gui.pixelInset.x =  Mathf.Clamp( guiTouchPos.x, guiBoundary.min.x, guiBoundary.max.x );
+					gui.pixelInset.y =  Mathf.Clamp( guiTouchPos.y, guiBoundary.min.y, guiBoundary.max.y );		
 				}
 				
-				if ( touch.phase == iPhoneTouchPhase.Ended || touch.phase == iPhoneTouchPhase.Canceled )
+				if ( touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled )
 					ResetJoystick();					
 			}			
 		}

@@ -11,6 +11,8 @@
 // you double tap the left pad to jump
 //////////////////////////////////////////////////////////////
 
+#pragma strict
+
 @script RequireComponent( CharacterController )
 
 // This script must be attached to a GameObject that has a CharacterController
@@ -133,23 +135,23 @@ function Update()
 		
 		if ( rotateTouchPad )
 			camRotation = rotateTouchPad.position;
-//		else
-//		{
-//			// Use tilt instead
-////			print( iPhoneInput.acceleration );
-//			var acceleration = iPhoneInput.acceleration;
-//			var absTiltX = Mathf.Abs( acceleration.x );
-//			if ( acceleration.z < 0 && acceleration.x < 0 )
-//			{
-//				if ( absTiltX >= tiltPositiveYAxis )
-//					camRotation.y = (absTiltX - tiltPositiveYAxis) / (1 - tiltPositiveYAxis);
-//				else if ( absTiltX <= tiltNegativeYAxis )
-//					camRotation.y = -( tiltNegativeYAxis - absTiltX) / tiltNegativeYAxis;
-//			}
-//			
-//			if ( Mathf.Abs( acceleration.y ) >= tiltXAxisMinimum )
-//				camRotation.x = -(acceleration.y - tiltXAxisMinimum) / (1 - tiltXAxisMinimum);
-//		}
+		else
+		{
+			// Use tilt instead
+//			print( iPhoneInput.acceleration );
+			var acceleration = Input.acceleration;
+			var absTiltX = Mathf.Abs( acceleration.x );
+			if ( acceleration.z < 0 && acceleration.x < 0 )
+			{
+				if ( absTiltX >= tiltPositiveYAxis )
+					camRotation.y = (absTiltX - tiltPositiveYAxis) / (1 - tiltPositiveYAxis);
+				else if ( absTiltX <= tiltNegativeYAxis )
+					camRotation.y = -( tiltNegativeYAxis - absTiltX) / tiltNegativeYAxis;
+			}
+			
+			if ( Mathf.Abs( acceleration.y ) >= tiltXAxisMinimum )
+				camRotation.x = -(acceleration.y - tiltXAxisMinimum) / (1 - tiltXAxisMinimum);
+		}
 		
 		camRotation.x *= rotationSpeed.x;
 		camRotation.y *= rotationSpeed.y;

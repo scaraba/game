@@ -60,7 +60,11 @@ public abstract class Ship : MonoBehaviour {
     
     }
 
-
+    void fireTouch()
+    { 
+    
+    
+    }
 
     public virtual void fire()
     {

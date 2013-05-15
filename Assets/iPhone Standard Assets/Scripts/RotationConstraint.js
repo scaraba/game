@@ -45,8 +45,9 @@ function Start()
 	}
 	
 	// Set the min and max rotations in quaternion space
-	minQuaternion = thisTransform.localRotation * Quaternion.AngleAxis( min, rotateAround );
-	maxQuaternion = thisTransform.localRotation * Quaternion.AngleAxis( max, rotateAround );
+	var axisRotation = Quaternion.AngleAxis( thisTransform.localRotation.eulerAngles[ axis ], rotateAround );
+	minQuaternion = axisRotation * Quaternion.AngleAxis( min, rotateAround );
+	maxQuaternion = axisRotation * Quaternion.AngleAxis( max, rotateAround );
 	range = max - min;
 }
 

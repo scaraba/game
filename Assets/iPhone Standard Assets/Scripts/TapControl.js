@@ -9,6 +9,8 @@
 // camera zooming and rotation. 
 //////////////////////////////////////////////////////////////
 
+#pragma strict
+
 enum ControlState
 {
 	WaitingForFirstTouch,
@@ -84,7 +86,7 @@ function FaceMovementDirection()
 		thisTransform.forward = horizontalVelocity.normalized;
 }
 
-function CameraControl( touch0 : iPhoneTouch, touch1 : iPhoneTouch )
+function CameraControl( touch0 : Touch, touch1 : Touch )
 {						
 	if( rotateEnabled && state == ControlState.RotatingCamera )
 	{			
@@ -126,10 +128,10 @@ function CameraControl( touch0 : iPhoneTouch, touch1 : iPhoneTouch )
 
 function CharacterControl()
 {
-	var count : int = iPhoneInput.touchCount;	
+	var count : int = Input.touchCount;	
 	if( count == 1 && state == ControlState.MovingCharacter )
 	{
-		var touch : iPhoneTouch = iPhoneInput.GetTouch(0);
+		var touch : Touch = Input.GetTouch(0);
 		
 		// Check for jump
 		if ( character.isGrounded && jumpButton.HitTest( touch.position ) )
@@ -138,7 +140,7 @@ function CharacterControl()
 			velocity = character.velocity;
 			velocity.y = jumpSpeed;
 		}
-		else if ( !jumpButton.HitTest( touch.position ) && touch.phase != iPhoneTouchPhase.Began )
+		else if ( !jumpButton.HitTest( touch.position ) && touch.phase != TouchPhase.Began )
 		{
 			// If we aren't jumping, then let's move to where the touch was placed
 			var ray = cam.ScreenPointToRay( Vector3( touch.position.x, touch.position.y ) );
@@ -216,7 +218,7 @@ function Update ()
 	// iPhoneTouchPhase.Began. The following state machine takes this into
 	// account to improve the feedback loop when using UnityRemote.
 
-	var touchCount : int = iPhoneInput.touchCount;
+	var touchCount : int = Input.touchCount;
 	if ( touchCount == 0 )
 	{
 		ResetControlState();
@@ -224,11 +226,11 @@ function Update ()
 	else
 	{
 		var i : int;
-		var touch : iPhoneTouch;
-		var touches = iPhoneInput.touches;
+		var touch : Touch;
+		var theseTouches = Input.touches;
 		
-		var touch0 : iPhoneTouch;
-		var touch1 : iPhoneTouch;
+		var touch0 : Touch;
+		var touch1 : Touch;
 		var gotTouch0 = false;
 		var gotTouch1 = false;		
 		
@@ -237,10 +239,10 @@ function Update ()
 		{
 			for ( i = 0; i < touchCount; i++ )
 			{
-				touch = touches[ i ];
+				touch = theseTouches[ i ];
 		
-				if ( touch.phase != iPhoneTouchPhase.Ended
-					&& touch.phase != iPhoneTouchPhase.Canceled )
+				if ( touch.phase != TouchPhase.Ended
+					&& touch.phase != TouchPhase.Canceled )
 				{
 					state = ControlState.WaitingForSecondTouch;
 					firstTouchTime = Time.time;
@@ -258,9 +260,9 @@ function Update ()
 		{
 			for ( i = 0; i < touchCount; i++ )
 			{
-				touch = touches[ i ];
+				touch = theseTouches[ i ];
 
-				if ( touch.phase != iPhoneTouchPhase.Canceled )
+				if ( touch.phase != TouchPhase.Canceled )
 				{
 					if ( touchCount >= 2 && touch.fingerId != fingerDown[ 0 ] )
 					{
@@ -280,7 +282,7 @@ function Update ()
 						// as a move or it is lifted, which is also a move. 
 						if ( touch.fingerId == fingerDown[ 0 ] &&
 							( Time.time > firstTouchTime + minimumTimeUntilMove
-								|| touch.phase == iPhoneTouchPhase.Ended ) )
+								|| touch.phase == TouchPhase.Ended ) )
 						{
 							state = ControlState.MovingCharacter;
 							break;
@@ -296,9 +298,9 @@ function Update ()
 			// See if we still have both fingers	
 			for ( i = 0; i < touchCount; i++ )
 			{
-				touch = touches[ i ];
+				touch = theseTouches[ i ];
 
-				if ( touch.phase == iPhoneTouchPhase.Began )
+				if ( touch.phase == TouchPhase.Began )
 				{
 					if ( touch.fingerId == fingerDown[ 0 ]
 						&& fingerDownFrame[ 0 ] == Time.frameCount )
@@ -320,9 +322,9 @@ function Update ()
 					}
 				}
 										
-				if ( touch.phase == iPhoneTouchPhase.Moved
-					|| touch.phase == iPhoneTouchPhase.Stationary
-					|| touch.phase == iPhoneTouchPhase.Ended )
+				if ( touch.phase == TouchPhase.Moved
+					|| touch.phase == TouchPhase.Stationary
+					|| touch.phase == TouchPhase.Ended )
 				{
 					if ( touch.fingerId == fingerDown[ 0 ] )
 					{
@@ -386,11 +388,11 @@ function Update ()
 		{
 			for ( i = 0; i < touchCount; i++ )
 			{
-				touch = touches[ i ];
+				touch = theseTouches[ i ];
 
-				if ( touch.phase == iPhoneTouchPhase.Moved
-					|| touch.phase == iPhoneTouchPhase.Stationary
-					|| touch.phase == iPhoneTouchPhase.Ended )
+				if ( touch.phase == TouchPhase.Moved
+					|| touch.phase == TouchPhase.Stationary
+					|| touch.phase == TouchPhase.Ended )
 				{
 					if ( touch.fingerId == fingerDown[ 0 ] )
 					{

@@ -7,6 +7,8 @@
 // where this script is attached.
 //////////////////////////////////////////////////////////////
 
+#pragma strict
+
 var targetTransform : Transform;		// Transform to follow
 var faceForward : boolean = false;		// Match forward vector?
 private var thisTransform : Transform;

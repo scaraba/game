@@ -1,3 +1,6 @@
+
+#pragma strict
+
 var target : Transform;
 var smoothTime = 0.3;
 private var thisTransform : Transform;
