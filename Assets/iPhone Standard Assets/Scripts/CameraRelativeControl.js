@@ -112,9 +112,9 @@ function Update()
 	
 	// Face the character to match with where she is moving
 	//FaceMovementDirection();	
-	
+	var control : Vector3;
 	// Scale joystick input with rotation speed
-	var camRotation = rotateJoystick.position;
+	var camRotation = control;
 	//camRotation.x *= rotationSpeed.x;    
     //camRotation.y *= rotationSpeed.y;
 	//camRotation *= Time.deltaTime;
