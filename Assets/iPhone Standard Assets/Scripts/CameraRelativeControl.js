@@ -31,6 +31,7 @@ private var character : CharacterController;
 private var velocity : Vector3;						// Used for continuing momentum while in air
 private var canJump = true;
 
+
 function Start()
 {
 	// Cache component lookup at startup instead of doing this every frame	
@@ -43,7 +44,7 @@ function Start()
 		thisTransform.position = spawn.transform.position;	
 }
 
-function FaceMovementDirection()
+/*function FaceMovementDirection()
 {	
 	var horizontalVelocity : Vector3 = character.velocity;
 	horizontalVelocity.y = 0; // Ignore vertical movement
@@ -51,7 +52,7 @@ function FaceMovementDirection()
 	// If moving significantly in a new direction, point that character in that direction
 	if ( horizontalVelocity.magnitude > 0.1 )
 		thisTransform.forward = horizontalVelocity.normalized;
-}
+}*/
 
 function OnEndGame()
 {
@@ -110,16 +111,23 @@ function Update()
 		velocity = Vector3.zero;
 	
 	// Face the character to match with where she is moving
-	FaceMovementDirection();	
+	//FaceMovementDirection();	
 	
 	// Scale joystick input with rotation speed
 	var camRotation = rotateJoystick.position;
-	camRotation.x *= rotationSpeed.x;
-	camRotation.y *= rotationSpeed.y;
-	camRotation *= Time.deltaTime;
-	
+	//camRotation.x *= rotationSpeed.x;    
+    //camRotation.y *= rotationSpeed.y;
+	//camRotation *= Time.deltaTime;
+    camRotation.y *= 0;
+    camRotation.z *= rotationSpeed.y;
+    camRotation.y = 0;
+	character.transform.forward = camRotation.normalized;
+
 	// Rotate around the character horizontally in world, but use local space
 	// for vertical rotation
-	cameraPivot.Rotate( 0, camRotation.x, 0, Space.World );
+	//cameraPivot.Rotate( 0, camRotation.x, 0, Space.World );
+    cameraPivot.Rotate(camRotation.x, camRotation.y,0);
 	cameraPivot.Rotate( camRotation.y, 0, 0 );
+
+
 }
