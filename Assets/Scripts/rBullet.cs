@@ -18,9 +18,8 @@ public class rBullet : MonoBehaviour {
 
     void Update()
     {
-  
 
-    GameObject go = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
+   
     rigidbody.MovePosition(rigidbody.position + transform.forward * Time.deltaTime * speed);
    
     }

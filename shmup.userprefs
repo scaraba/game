@@ -1,12 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\iPhone Standard Assets\Scripts\RoboTronTypeControls.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Ship.cs">
     <Files>
-      <File FileName="Assets\Scripts\Ship.cs" Line="63" Column="1" />
+      <File FileName="Assets\Scripts\Ship.cs" Line="1" Column="1" />
       <File FileName="Assets\iPhone Standard Assets\Scripts\RotationConstraint.js" Line="1" Column="1" />
       <File FileName="Assets\iPhone Standard Assets\Scripts\Joystick.js" Line="1" Column="1" />
-      <File FileName="Assets\iPhone Standard Assets\Scripts\RoboTronTypeControls.js" Line="94" Column="2" />
-      <File FileName="Assets\iPhone Standard Assets\Scripts\CameraRelativeControl.js" Line="97" Column="52" />
+      <File FileName="Assets\iPhone Standard Assets\Scripts\RoboTronTypeControls.js" Line="1" Column="1" />
+      <File FileName="Assets\iPhone Standard Assets\Scripts\CameraRelativeControl.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
