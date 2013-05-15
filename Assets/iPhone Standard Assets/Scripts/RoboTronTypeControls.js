@@ -9,16 +9,16 @@
 // A quick double-tap on the right joystick will make the 
 // character jump.
 //////////////////////////////////////////////////////////////
-/*
+
 // This script must be attached to a GameObject that has a CharacterController
 @script RequireComponent( CharacterController )
 
 var moveJoystick : Joystick;
 //var rotateJoystick : Joystick;
-var shootRotation : Joystick; //Joystick repurposed for shooting
+var shootJoystick : Joystick; //Joystick repurposed for shooting
 
 //var cameraPivot : Transform;						// The transform used for camera rotation
-//var cameraTransform : Transform;					// The actual transform of the camera
+var cameraTransform : Transform;					// The actual transform of the camera
 var bullet : GameObject;
 
 var speed : float = 5;								// Ground speed
@@ -31,7 +31,7 @@ var rotationSpeed : Vector2 = Vector2( 50, 25 );	// Camera rotation speed for ea
 private var thisTransform : Transform;
 private var character : CharacterController;
 
-//private var velocity : Vector3;						// Used for continuing momentum while in air
+private var velocity : Vector3;						// Used for continuing momentum while in air
 //private var canJump = true;
 
 function Start()
@@ -60,7 +60,7 @@ function OnEndGame()
 {
 	// Disable joystick when the game ends	
 	moveJoystick.Disable();
-	rotateJoystick.Disable();
+	shootJoystick.Disable();
 	
 	// Don't allow any more control changes when the game ends
 	this.enabled = false;
@@ -77,29 +77,7 @@ function Update()
 	var absJoyPos = Vector2( Mathf.Abs( moveJoystick.position.x ), Mathf.Abs( moveJoystick.position.y ) );
 	movement *= speed * ( ( absJoyPos.x > absJoyPos.y ) ? absJoyPos.x : absJoyPos.y );
 	
-	// Check for jump
-	if ( character.isGrounded )
-	{
-		if ( !rotateJoystick.IsFingerDown() )
-			canJump = true;
-		
-		if ( canJump && rotateJoystick.tapCount == 2 )
-		{
-			// Apply the current movement to launch velocity
-			velocity = character.velocity;
-			velocity.y = jumpSpeed;
-			canJump = false;
-		}
-	}
-	else
-	{			
-		// Apply gravity to our velocity to diminish it over time
-		//velocity.y += Physics.gravity.y * Time.deltaTime;
-		
-		// Adjust additional movement while in-air
-		//movement.x *= inAirMultiplier;
-		//movement.z *= inAirMultiplier;
-	}
+
 	
 	movement += velocity;
 	movement += Physics.gravity;
@@ -107,10 +85,6 @@ function Update()
 	
 	// Actually move the character
 	character.Move( movement );
-	
-	//if ( character.isGrounded )
-		// Remove any persistent velocity after landing
-		//velocity = Vector3.zero;
 	
 	// Face the character to match with where she is moving
 	FaceMovementDirection();	
@@ -121,7 +95,7 @@ function Update()
 	//camRotation.y *= rotationSpeed.y;
 	//camRotation *= Time.deltaTime;
 	
-	var aimRotation = shootRotation.position;
+	var aimRotation = shootJoystick.position;
 	aimRotation.x *= rotationSpeed.x;
 	aimRotation.y *= rotationSpeed.y;
 	aimRotation *= Time.deltaTime;
@@ -131,4 +105,3 @@ function Update()
 	//cameraPivot.Rotate( 0, camRotation.x, 0, Space.World );
 	//cameraPivot.Rotate( camRotation.y, 0, 0 );
 }
-*/

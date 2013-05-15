@@ -46,28 +46,11 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\BulletShield.cs" />
-     <Compile Include="Assets\Scripts\Character\ActionController.cs" />
-     <Compile Include="Assets\Scripts\Character\AnimationController.cs" />
-     <Compile Include="Assets\Scripts\Character\CameraController.cs" />
-     <Compile Include="Assets\Scripts\Character\MovementController.cs" />
-     <Compile Include="Assets\Scripts\DemoControl.cs" />
      <Compile Include="Assets\Scripts\EnemyShip.cs" />
      <Compile Include="Assets\Scripts\EnemyShip2.cs" />
      <Compile Include="Assets\Scripts\EnemyShip3.cs" />
-     <Compile Include="Assets\Scripts\GUI\CreditsGUI.cs" />
-     <Compile Include="Assets\Scripts\GUI\GameGUI.cs" />
-     <Compile Include="Assets\Scripts\GUI\MenuGUI.cs" />
-     <Compile Include="Assets\Scripts\GUI\ScoreboardGUI.cs" />
-     <Compile Include="Assets\Scripts\GUI\SetupGUI.cs" />
      <Compile Include="Assets\Scripts\GUIManager.cs" />
-     <Compile Include="Assets\Scripts\Items\ActiveObject.cs" />
-     <Compile Include="Assets\Scripts\Items\Button.cs" />
-     <Compile Include="Assets\Scripts\Items\Crystal.cs" />
-     <Compile Include="Assets\Scripts\Items\ImpactWarning.cs" />
-     <Compile Include="Assets\Scripts\Items\Meteorite.cs" />
-     <Compile Include="Assets\Scripts\Items\Spaceship.cs" />
      <Compile Include="Assets\Scripts\LevelScroll.cs" />
-     <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerShip.cs" />
      <Compile Include="Assets\Scripts\PowerUp.cs" />
      <Compile Include="Assets\Scripts\ReflectBullet.cs" />
@@ -77,10 +60,6 @@
      <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\Spread.cs" />
      <Compile Include="Assets\Scripts\StartGame.cs" />
-     <Compile Include="Assets\Scripts\Utility\Label.cs" />
-     <Compile Include="Assets\Scripts\Utility\Radar.cs" />
-     <Compile Include="Assets\Scripts\Utility\XperiaInput.cs" />
-     <Compile Include="Assets\Scripts\Utility\ZeusInput.cs" />
      <Compile Include="Assets\Sources\LightningBolt.cs" />
      <None Include="Assets\Scripts\shaderstuff\RenderOverdrawZ.shader" />
      <None Include="Assets\iPhone Standard Assets\Additive-Projector\Guidelines.txt" />
@@ -99,7 +78,6 @@
      <None Include="Assets\Show RenderTypes\ShowRenderTypes.shader" />
      <None Include="Assets\iPhone Standard Assets\iPhone Shaders\Lightmap Shaders\iPhone Lightmap Reflective.shader" />
      <None Include="Assets\iPhone Standard Assets\iPhone Shaders\Particle Shaders\iPhone Particles Additive Culled.shader" />
-     <None Include="Assets\Show Overdraw\RenderOverdrawZ.shader" />
      <None Include="Assets\Scripts\AstroDude.shader" />
      <None Include="Assets\Glowing Things\RenderFunkyThings.shader" />
      <None Include="Assets\iPhone Standard Assets\Blob-Shadow\Guidelines.txt" />
@@ -109,7 +87,6 @@
      <None Include="Assets\iPhone Standard Assets\iPhone Shaders\Lightmap Shaders\iPhone Lightmap Only.shader" />
      <None Include="Assets\iPhone Standard Assets\iPhone Shaders\Lightmap Shaders\iPhone Lightmap AlphaTest.shader" />
      <None Include="Assets\Common Assets\RenderDepth.shader" />
-     <None Include="Assets\Show Overdraw\RenderOverdraw.shader" />
      <None Include="Assets\iPhone Standard Assets\iPhone Shaders\Self Illumination\iPhone Self Illuminated.shader" />
      <None Include="Assets\Common Assets\RenderNormalsAndDepth.shader" />
      <None Include="Assets\iPhone Standard Assets\Blob-Shadow\ProjectorMultiply.shader" />
