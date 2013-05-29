@@ -55,8 +55,8 @@ function FaceMovementDirection()
 	//horizontalVelocity.y = 0; // Ignore vertical movement
 	
 	// If moving significantly in a new direction, point that character in that direction
-	if ( horizontalVelocity.magnitude > 0.1 )
-		thisTransform.forward = horizontalVelocity.normalized;
+	//if ( horizontalVelocity.magnitude > 0.1 )
+		//thisTransform.forward = horizontalVelocity.normalized;
 }
 
 function Fire()
@@ -87,7 +87,19 @@ function Update()
 	movement.y = 0;
 	movement.Normalize(); // Adjust magnitude after ignoring vertical movement
 	
-	// Let's use the largest component of the joystick position for the speed.
+
+    var rotation =  cameraTransform.TransformDirection( Vector3(shootJoystick.position.x, 0, shootJoystick.position.y) );
+    rotation.y = 0;
+    rotation.Normalize();
+    thisTransform.rotation=Quaternion.Euler(rotation);
+    Debug.Log(rotation + "," + thisTransform.forward);
+    
+
+    //var angle = Vector3.Angle(rotation,thisTransform.forward);
+    //thisTransform.Rotate(Vector3(0,angle,0));
+	Debug.Log(angle + "Angle of sticks");
+    
+    // Let's use the largest component of the joystick position for the speed.
 	var absJoyPos = Vector2( Mathf.Abs( moveJoystick.position.x ), Mathf.Abs( moveJoystick.position.y ) );
 	movement *= speed * ( ( absJoyPos.x > absJoyPos.y ) ? absJoyPos.x : absJoyPos.y );
 	
@@ -108,6 +120,8 @@ function Update()
 	//camRotation.x *= rotationSpeed.x;
 	//camRotation.y *= rotationSpeed.y;
 	//camRotation *= Time.deltaTime;
+
+
 	
 	var aimRotation = shootJoystick.position;
 	aimRotation.x *= rotationSpeed.x;

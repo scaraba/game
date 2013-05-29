@@ -9,7 +9,8 @@ public class character : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         GameObject go = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
 	}
 }
